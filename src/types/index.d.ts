@@ -1,4 +1,4 @@
-interface CeloAssets {
+interface Assets {
   nativeBalance: {
     balance: string;
     decimals: number;

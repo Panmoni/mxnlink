@@ -6,13 +6,13 @@ import { appConfig } from "@/config";
 export interface UsePortalWalletReturn {
   portal: Portal | undefined;
   eip155Address: string;
-  assets: CeloAssets | undefined;
+  assets: Assets | undefined;
   error: string | undefined;
   clientApiKey: string;
   setClientApiKey: (key: string) => void;
   initializeWallet: () => Promise<void>;
   disconnectWallet: () => void;
-  getAssets: () => Promise<CeloAssets | undefined>;
+  getAssets: () => Promise<Assets | undefined>;
   handleFundWallet: () => Promise<void>;
   sendTokens: (params: {
     to: string;
@@ -23,7 +23,7 @@ export interface UsePortalWalletReturn {
 
 export function usePortalWallet(): UsePortalWalletReturn {
   // State
-  const [assets, setAssets] = useState<CeloAssets | undefined>(undefined);
+  const [assets, setAssets] = useState<Assets | undefined>(undefined);
   const [portal, setPortal] = useState<Portal | undefined>(undefined);
   const [eip155Address, setEip155Address] = useState<string>("");
   const [error, setError] = useState<string | undefined>(undefined);
@@ -52,7 +52,7 @@ export function usePortalWallet(): UsePortalWalletReturn {
   const getAssetsFrom = async (portalInstance: Portal) => {
     const assets = (await portalInstance.getAssets(
       appConfig.chainId
-    )) as unknown as CeloAssets;
+    )) as unknown as Assets;
     setAssets(assets);
     return assets;
   };
@@ -61,7 +61,7 @@ export function usePortalWallet(): UsePortalWalletReturn {
     if (!portal) return;
     const assets = (await portal.getAssets(
       appConfig.chainId
-    )) as unknown as CeloAssets;
+    )) as unknown as Assets;
     setAssets(assets);
     return assets;
   };
@@ -123,12 +123,14 @@ export function usePortalWallet(): UsePortalWalletReturn {
     if (!portal) return;
 
     try {
-      toast.info("Requesting testnet CELO...");
+      toast.info(`Requesting testnet ${appConfig.nativeTokenSymbol}...`);
       await portal.receiveTestnetAsset(appConfig.chainId, {
         amount: "0.1",
-        token: "CELO",
+        token: appConfig.nativeTokenSymbol,
       });
-      toast.success("Wallet funded with testnet CELO!");
+      toast.success(
+        `Wallet funded with testnet ${appConfig.nativeTokenSymbol}!`
+      );
     } catch (error) {
       toast.error(`Failed to fund wallet: ${error}`);
     }
@@ -169,10 +171,7 @@ export function usePortalWallet(): UsePortalWalletReturn {
         action: {
           label: "View on Explorer",
           onClick: () => {
-            window.open(
-              `https://celo-alfajores.blockscout.com/tx/${transactionHash}`,
-              "_blank"
-            );
+            window.open(`${appConfig.explorerUrl}${transactionHash}`, "_blank");
           },
         },
       });

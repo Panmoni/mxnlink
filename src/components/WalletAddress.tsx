@@ -3,6 +3,7 @@ import { toast } from "sonner";
 import { Button } from "./ui/Button";
 import { Card } from "./ui/Card";
 import { Copy, Plus, RefreshCw } from "lucide-react";
+import { appConfig } from "@/config";
 
 interface WalletAddressProps {
   address: string;
@@ -16,7 +17,7 @@ export function WalletAddress({
   getAssets,
 }: WalletAddressProps) {
   return (
-    <Card title="Your Celo Address" className="mb-6">
+    <Card title="Your Address" className="mb-6">
       <div className="space-y-4">
         <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 rounded-md p-3 overflow-hidden">
           <code className="text-sm font-mono break-all">{address}</code>
@@ -35,7 +36,7 @@ export function WalletAddress({
         <div className="flex flex-wrap gap-3">
           <Button onClick={handleFundWallet} variant="primary">
             <Plus className="h-4 w-4 mr-1.5" />
-            Fund with Testnet CELO
+            Fund with Testnet {appConfig.nativeTokenSymbol}
           </Button>
 
           <Button onClick={getAssets} variant="secondary">

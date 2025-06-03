@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "./ui/Card";
 import { Plus } from "lucide-react";
+import { appConfig } from "@/config";
 
 interface TokenBalance {
   name: string;
@@ -86,7 +87,7 @@ export function TokenBalances({
             No tokens found
           </h3>
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Try funding your wallet with testnet CELO.
+            Try funding your wallet with testnet {appConfig.nativeTokenSymbol}.
           </p>
         </div>
       ) : (
@@ -103,7 +104,7 @@ export function TokenBalances({
               </tr>
             </thead>
             <tbody>
-              {/* Native CELO token */}
+              {/* Native token */}
               {nativeBalance && renderTokenRow(nativeBalance, true)}
 
               {/* Other tokens */}

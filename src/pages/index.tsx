@@ -7,7 +7,6 @@ import { TokenBalances } from "@/components/TokenBalances";
 import { SendTokensForm } from "@/components/SendTokensForm";
 import { ErrorDisplay } from "@/components/ErrorDisplay";
 import { Loader2 } from "lucide-react";
-import { appConfig } from "@/config";
 import Portal from "@portal-hq/web";
 
 export default function Home() {
@@ -58,8 +57,7 @@ export default function Home() {
             Portal Wallet - Hackathon Kit
           </h1>
           <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-            A simple wallet application built with Portal using the Celo
-            blockchain.{" "}
+            A simple wallet application built with Portal.{" "}
             <a
               href="https://app.portalhq.io"
               target="_blank"

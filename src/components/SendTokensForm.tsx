@@ -3,6 +3,7 @@ import { Card } from "./ui/Card";
 import { Input } from "./ui/Input";
 import { Select } from "./ui/Select";
 import { Button } from "./ui/Button";
+import { appConfig } from "@/config";
 
 interface TokenOption {
   symbol: string;
@@ -52,7 +53,7 @@ export function SendTokensForm({
       symbol: nativeBalance.symbol,
       name: nativeBalance.name,
       balance: nativeBalance.balance,
-      value: "CELO",
+      value: appConfig.nativeTokenSymbol,
     });
   }
 

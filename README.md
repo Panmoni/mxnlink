@@ -2,11 +2,11 @@
 
 # Portal Hackathon Kit - Web SDK
 
-This repository shows you how you can easily integrate `CELO` into your web app using the [Portal Web SDK](https://docs.portalhq.io/guides/web). It covers the following features.
+This repository shows you how you can easily integrate `MXNB` into your web app using the [Portal Web SDK](https://docs.portalhq.io/guides/web). It covers the following features.
 
 1. Generate a Wallet
 2. Fetch and display balances.
-3. Fund wallet with `CELO` on Celo Alfajores Testnet.
+3. Fund wallet with `MXNB` on Arbitrum Sepolia.
 4. Transfer tokens to a given recipient address.
 
 ## How to Run This Example App
@@ -48,20 +48,20 @@ This app demonstrates how to integrate the Portal SDK in a Next.js application t
 - `src/pages/index.tsx` - Main application page and component structure
 - `src/hooks/usePortalWallet.ts` - Custom hook that manages all Portal SDK interactions
 - `src/components/` - UI components for the wallet interface
-- `src/config/index.ts` - Application configuration including Celo network settings
+- `src/config/index.ts` - Application configuration including Arbitrum network settings
 - `src/types/index.d.ts` - TypeScript definitions for Portal SDK responses
 
 ### Key Components
 
 - **ApiKeyInput** - Allows users to enter their Portal Client API Key and initialize the wallet
-- **WalletAddress** - Displays the user's Celo address with copy functionality and funding options
+- **WalletAddress** - Displays the user's EVM address with copy functionality and funding options
 - **TokenBalances** - Shows all tokens in the user's wallet with balances
 - **SendTokensForm** - Form for sending tokens to another address
 
 ### Wallet Initialization Flow
 
 1. User enters their Portal Client API Key
-2. The app initializes the Portal SDK with the key and connects to the Celo Alfajores Testnet
+2. The app initializes the Portal SDK with the key and connects to the Arbitrum Sepolia network
 3. The SDK creates a new wallet or retrieves an existing one
 4. The app displays the wallet address and token balances
 
@@ -69,8 +69,8 @@ This app demonstrates how to integrate the Portal SDK in a Next.js application t
 
 The app fetches and displays the user's token balances using the Portal SDK's `getAssets` method. Users can:
 
-- View their `CELO` and other token balances
-- Fund their wallet with testnet `CELO`
+- View their `MXNB` and other token balances
+- Fund their wallet with testnet `MXNB`
 - Refresh balances to see updated amounts
 
 ### Token Transfer Flow
@@ -78,17 +78,13 @@ The app fetches and displays the user's token balances using the Portal SDK's `g
 1. User selects a token to send
 2. User enters a recipient address and amount
 3. The app uses Portal SDK's `sendAsset` method to create and send the transaction
-4. A confirmation displays with a link to view the transaction on the Celo explorer
+4. A confirmation displays with a link to view the transaction on the Arbitrum Sepolia explorer
 
 ## Faucets for Testing
 
-You can get more `CELO` tokens for testing with the below faucet.
+You can get more `MXNB` tokens for testing with the below faucet.
 
-- [Alfajores Testnet Faucet](https://faucet.celo.org/alfajores) - Get testnet CELO tokens
-
-If you need tokens other than `CELO`, we recommend getting testnet `CELO` and swapping them via Mento's DEX:
-
-- [Mento App](https://app.mento.org/) - Swap between `CELO`, `cUSD`, `USDC`, `USDT`, and more
+- [Juno Faucet](https://buildwithjuno.com/en-US/faucet) - Get testnet `MXNB` tokens
 
 ## How to Customize
 
@@ -119,10 +115,9 @@ Portal supplies several APIs for simplifying your development.
 - [Build a Transaction](https://docs.portalhq.io/reference/client-api/v3-endpoints#build-a-transaction): This endpoint builds a formatted transaction to send a fungible asset (native, ERC-20, and SPL tokens) for a given chain.
 - And [more](https://docs.portalhq.io/reference/client-api/v3-endpoints).
 
-### CELO Documentation
+### MXNB Documentation
 
-- [Celo Docs](https://docs.celo.org/) - Official Celo documentation
-- [Mento Protocol](https://www.mento.org/) - Celo's stablecoin protocol
+- [Juno Docs](https://buildwithjuno.com/en-US) - Official Juno website
 
 ### Other Helpful Resources
 
